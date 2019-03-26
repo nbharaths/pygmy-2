@@ -43,14 +43,29 @@ books = [
 
 
 @app.route('/query', methods=['GET'])
-def get_books_by_topic():
+def get_books():
     topic = request.args.get('topic', type=str)
     if topic is not None:
         return jsonify({'books': [b for b in books if b['topic'] == topic]})
     else:
-        item = request.args.get('item', type=int)
-        print(item)
-        return jsonify({'books': [b for b in books if b['id'] == item]})
+        id = request.args.get('id', type=int)
+        return jsonify({'books': [b for b in books if b['id'] == id]})
+
+
+@app.route('/update', methods=['PUT'])
+def update_books():
+    id = request.args.get('item', type=int)
+    cost = request.json.get('cost')
+    if cost is not None:
+        for b in books:
+            if b['id'] == id:
+                b['cost'] = cost
+    else:
+        delta = request.json.get('delta')
+        for b in books:
+            if b['id'] == id:
+                b['stock'] += delta  # Add check for zero stock
+    return jsonify({'books': [b for b in books if b['id'] == id]})
 
 
 if __name__ == '__main__':
