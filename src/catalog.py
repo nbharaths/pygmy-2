@@ -16,28 +16,28 @@ books = [
         'title': book_names['1'],
         'cost': 100,
         'topic': topic_names[0],
-        'stock': 1
+        'stock': 10
     },
     {
         'id': 2,
         'title': book_names['2'],
         'cost': 200,
         'topic': topic_names[0],
-        'stock': 1
+        'stock': 10
     },
     {
         'id': 3,
         'title': book_names['3'],
         'cost': 300,
         'topic': topic_names[1],
-        'stock': 1
+        'stock': 10
     },
     {
         'id': 4,
         'title': book_names['4'],
         'cost': 400,
         'topic': topic_names[1],
-        'stock': 1
+        'stock': 10
     }
 ]
 
@@ -48,7 +48,7 @@ def get_books():
     if topic is not None:
         return jsonify({'books': [b for b in books if b['topic'] == topic]})
     else:
-        id = request.args.get('id', type=int)
+        id = request.args.get('item', type=int)
         return jsonify({'books': [b for b in books if b['id'] == id]})
 
 
