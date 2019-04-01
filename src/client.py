@@ -5,25 +5,10 @@ import requests
 
 CATALOG_SERVER = 'http://localhost:5000/'
 ORDER_SERVER = 'http://localhost:5001/'
+FRONTEND_SERVER = 'http://localhost:5002/'
 
 actions = ['search', 'lookup', 'buy']
 topics = ['ds', 'gs']
-
-
-def search(topic):
-    r = requests.get(CATALOG_SERVER + 'query?topic=' + topic)
-    print(r.text)
-
-
-def lookup(item_number):
-    r = requests.get(CATALOG_SERVER + 'query?item=' + str(item_number))
-    print(r.text)
-
-
-def buy(item_number):
-    r = requests.get(ORDER_SERVER + 'buy?item=' + str(item_number))
-    print(r.text)
-
 
 if __name__ == '__main__':
 
@@ -33,14 +18,17 @@ if __name__ == '__main__':
         print(action)
         if action == 'search':
             topic = random.choice(topics)
-            search(topic)
+            r = requests.get(FRONTEND_SERVER + 'search?topic=' + topic)
+            print(r.status_code)
 
         elif action == 'lookup':
             item = random.randint(1, 4)
-            lookup(item)
+            r = requests.get(FRONTEND_SERVER + 'lookup?item=' + str(item))
+            print(r.status_code)
 
         else:
             item = random.randint(1, 4)
-            buy(item)
+            r = requests.get(FRONTEND_SERVER + 'buy?item=' + str(item))
+            print(r.status_code)
 
         sleep(5)

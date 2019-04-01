@@ -1,6 +1,10 @@
 #!flask/bin/python
 from flask import Flask, jsonify, request
 
+CATALOG_SERVER = 'http://localhost:5000/'
+ORDER_SERVER = 'http://localhost:5001/'
+FRONTEND_SERVER = 'http://localhost:5002/'
+
 book_names = {'1': 'How to get a good grade in 677 in 20 minutes a day',
               '2': 'RPCs for Dummies',
               '3': 'Xen and the Art of Surviving Graduate School',
