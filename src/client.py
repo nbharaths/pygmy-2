@@ -24,7 +24,7 @@ def pp_json(json_thing, sort=True, indents=4):
 
 def update_stock():
     id = random.randint(1, 4)
-    b = requests.put(CATALOG_SERVER + 'update?item=' + str(id), json={'delta': 2})
+    b = requests.post(CATALOG_SERVER + 'update?item=' + str(id), json={'delta': 2})
     assert b.status_code == 200, 'Periodic update failed!'
     print('Periodic update successful for', book_names[str(id)])
 

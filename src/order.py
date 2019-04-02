@@ -22,7 +22,7 @@ def buy_order():
     r = requests.get(CATALOG_SERVER + 'query?item=' + str(id))
     print(r.json())
     if r.json()['books'][0]['stock'] > 0:
-        b = requests.put(CATALOG_SERVER + 'update?item=' + str(id), json={'delta': -1})
+        b = requests.post(CATALOG_SERVER + 'update?item=' + str(id), json={'delta': -1})
         assert b.status_code == 200
         print('Bought ' + book_names[str(id)])
         return 'Bought ' + book_names[str(id)]

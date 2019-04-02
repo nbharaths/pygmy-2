@@ -54,7 +54,7 @@ def get_books():
         return jsonify({'books': [b for b in books if b['id'] == id]})
 
 
-@app.route('/update', methods=['PUT'])
+@app.route('/update', methods=['POST'])
 def update_books():
     id = request.args.get('item', type=int)
     cost = request.json.get('cost')
