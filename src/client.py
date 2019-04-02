@@ -1,6 +1,6 @@
 import json
 import random
-from time import sleep
+from time import sleep, time
 
 import pandas as pd
 import requests
@@ -29,13 +29,28 @@ def update_stock():
     print('Periodic update successful for', book_names[str(id)])
 
 
-if __name__ == '__main__':
+def test_response_times(num_req=1000):
+    times = []
+    for i in range(num_req):
+        print(i)
+        topic = random.choice(topics)
+        # print('Starting a search for', topic)
+        start_time = time()
+        r = requests.get(FRONTEND_SERVER + 'search?topic=' + topic)
+        times.append(time() - start_time)
+        # print(r.status_code)
+        assert r.status_code == 200, 'Search request failed!'
+        sleep(0.1)
+    return sum(times) / len(times)
 
+
+if __name__ == '__main__':
     df = pd.read_csv('sv_info.csv')
     CATALOG_SERVER = 'http://' + str(df['IP'][0]) + ':' + str(df['Port'][0]) + '/'
     ORDER_SERVER = 'http://' + str(df['IP'][1]) + ':' + str(df['Port'][1]) + '/'
     FRONTEND_SERVER = 'http://' + str(df['IP'][2]) + ':' + str(df['Port'][2]) + '/'
 
+    # print(test_response_times())
     while True:
 
         action = random.choice(actions)
