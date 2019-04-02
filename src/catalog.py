@@ -1,9 +1,6 @@
 #!flask/bin/python
+import pandas as pd
 from flask import Flask, jsonify, request
-
-CATALOG_SERVER = 'http://localhost:5000/'
-ORDER_SERVER = 'http://localhost:5001/'
-FRONTEND_SERVER = 'http://localhost:5002/'
 
 book_names = {'1': 'How to get a good grade in 677 in 20 minutes a day',
               '2': 'RPCs for Dummies',
@@ -73,4 +70,9 @@ def update_books():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    df = pd.read_csv('sv_info.txt')
+    CATALOG_SERVER = 'http://' + str(df['IP'][0]) + ':' + str(df['Port'][0]) + '/'
+    ORDER_SERVER = 'http://' + str(df['IP'][1]) + ':' + str(df['Port'][1]) + '/'
+    FRONTEND_SERVER = 'http://' + str(df['IP'][2]) + ':' + str(df['Port'][2]) + '/'
+
+    app.run(host='0.0.0.0', port=df['Port'][0], debug=True)

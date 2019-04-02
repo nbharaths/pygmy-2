@@ -1,0 +1,4 @@
+Type,IP,Port
+catalog,localhost,5000
+order,localhost,5001
+frontend,localhost,5002

@@ -1,16 +1,19 @@
 import random
 from time import sleep
 
+import pandas as pd
 import requests
-
-CATALOG_SERVER = 'http://localhost:5000/'
-ORDER_SERVER = 'http://localhost:5001/'
-FRONTEND_SERVER = 'http://localhost:5002/'
 
 actions = ['search', 'lookup', 'buy']
 topics = ['ds', 'gs']
 
 if __name__ == '__main__':
+
+    df = pd.read_csv('sv_info.txt')
+    CATALOG_SERVER = 'http://' + str(df['IP'][0]) + ':' + str(df['Port'][0]) + '/'
+    ORDER_SERVER = 'http://' + str(df['IP'][1]) + ':' + str(df['Port'][1]) + '/'
+    FRONTEND_SERVER = 'http://' + str(df['IP'][2]) + ':' + str(df['Port'][2]) + '/'
+
 
     while True:
 
