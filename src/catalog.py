@@ -48,8 +48,9 @@ def get_books():
     topic = request.args.get('topic', type=str)
     if topic is not None:
         return jsonify({'books': [b for b in books if b['topic'] == topic]})
-    else:
-        id = request.args.get('item', type=int)
+
+    id = request.args.get('item', type=int)
+    if id is not None:
         return jsonify({'books': [b for b in books if b['id'] == id]})
 
 
@@ -61,8 +62,9 @@ def update_books():
         for b in books:
             if b['id'] == id:
                 b['cost'] = cost
-    else:
-        delta = request.json.get('delta')
+
+    delta = request.json.get('delta')
+    if delta is not None:
         for b in books:
             if b['id'] == id:
                 b['stock'] += delta  # Add check for zero stock
@@ -70,7 +72,7 @@ def update_books():
 
 
 if __name__ == '__main__':
-    df = pd.read_csv('sv_info.txt')
+    df = pd.read_csv('sv_info.csv')
     CATALOG_SERVER = 'http://' + str(df['IP'][0]) + ':' + str(df['Port'][0]) + '/'
     ORDER_SERVER = 'http://' + str(df['IP'][1]) + ':' + str(df['Port'][1]) + '/'
     FRONTEND_SERVER = 'http://' + str(df['IP'][2]) + ':' + str(df['Port'][2]) + '/'
