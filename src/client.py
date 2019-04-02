@@ -22,6 +22,13 @@ def pp_json(json_thing, sort=True, indents=4):
     return None
 
 
+def update_stock():
+    id = random.randint(1, 4)
+    b = requests.put(CATALOG_SERVER + 'update?item=' + str(id), json={'delta': 2})
+    assert b.status_code == 200, 'Periodic update failed!'
+    print('Periodic update successful for', book_names[str(id)])
+
+
 if __name__ == '__main__':
 
     df = pd.read_csv('sv_info.csv')
@@ -56,5 +63,7 @@ if __name__ == '__main__':
             print(r.status_code)
             assert r.status_code == 200, 'Buy request failed!'
             print('Successfully bought', book_names[str(item)])
+
+        update_stock()
 
         sleep(5)
