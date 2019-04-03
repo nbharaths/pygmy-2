@@ -23,6 +23,7 @@ if not os.path.isfile('./times/client_lookup_time.txt'):
     file = open("./times/client_lookup_time.txt", "x")
     file.close()
 
+
 # Pretty printing for json
 def pp_json(json_thing, sort=True, indents=4):
     if type(json_thing) is str:
@@ -31,12 +32,14 @@ def pp_json(json_thing, sort=True, indents=4):
         print(json.dumps(json_thing, sort_keys=sort, indent=indents))
     return None
 
+
 # Method to update the book stock randomly
 def update_stock():
     id = random.randint(1, 4)
     b = requests.post(CATALOG_SERVER + 'update?item=' + str(id), json={'delta': 2})
     assert b.status_code == 200, 'Periodic update failed!'
     print('Periodic update successful for', book_names[str(id)])
+
 
 # Method for getting the performance stats for search, lookup and buy
 def test_response_times(num_req=10, mode='search'):
@@ -72,7 +75,9 @@ if __name__ == '__main__':
     ORDER_SERVER = 'http://' + str(df['IP'][1]) + ':' + str(df['Port'][1]) + '/'
     FRONTEND_SERVER = 'http://' + str(df['IP'][2]) + ':' + str(df['Port'][2]) + '/'
 
-    # test_response_times(mode='buy')
+    # test_response_times(mode='search')  # Uncomment to run ART per-tier for this search()
+    # test_response_times(mode='lookup') # Uncomment to run ART per-tier for this search()
+    # test_response_times(mode='buy') # Uncomment to run ART per-tier for this search()
     while True:
 
         action = random.choice(actions)

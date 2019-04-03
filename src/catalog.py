@@ -58,17 +58,23 @@ def get_books():
     catalog_start_time = time()
     topic = request.args.get('topic', type=str)
     if topic is not None:  # query by subject
+        print('Query in progress for', topic)
         ret = jsonify({'books': [b for b in books if b['topic'] == topic]})
+        print('Query successful!')
         with open('./times/catalog_search_time.txt', 'a') as f:
             f.write(str(time() - catalog_start_time) + '\n')
         return ret
 
     id = request.args.get('item', type=int)
     if id is not None:  # query by item
+        print('Query in progress for', book_names[str(id)])
         ret = jsonify({'books': [b for b in books if b['id'] == id]})
+        print('Query successful!')
         with open('./times/catalog_lookup_time.txt', 'a') as f:
             f.write(str(time() - catalog_start_time) + '\n')
         return ret
+    else:
+        print('Invalid query')
 
 # REST endpoint for update
 @app.route('/update', methods=['POST'])
@@ -76,6 +82,7 @@ def update_books():
     books = json.load(open('catalog.json'))
     catalog_start_time = time()
     id = request.args.get('item', type=int)
+    print('Update in progress for', book_names[str(id)])
     cost = request.json.get('cost')
     if cost is not None:  # query to update the cost of item
         for b in books:
@@ -87,8 +94,11 @@ def update_books():
         for b in books:
             if b['id'] == id:
                 b['stock'] += delta
+    else:
+        print('Invalid update')
     json.dump(books, open('catalog.json', 'w'))
     ret = jsonify({'books': [b for b in books if b['id'] == id]})
+    print('Update successful!')
     with open('./times/catalog_buy_time.txt', 'a') as f:
         f.write(str(time() - catalog_start_time) + '\n')
     return ret
