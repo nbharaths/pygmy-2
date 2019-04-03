@@ -35,7 +35,7 @@ def buy_order():
     order_buy_start_time = time()
     r = requests.get(CATALOG_SERVER + 'query?item=' + str(id))
     print(r.json())
-    if r.json()['books'][0]['stock'] > 0:
+    if r.json()['books'][0]['stock'] > 0:  # Checking for item to be in stock
         b = requests.post(CATALOG_SERVER + 'update?item=' + str(id), json={'delta': -1})
         assert b.status_code == 200
         with open('./times/order_buy_time.txt', 'a') as f:

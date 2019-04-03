@@ -57,14 +57,14 @@ def get_books():
     books = json.load(open('catalog.json'))
     catalog_start_time = time()
     topic = request.args.get('topic', type=str)
-    if topic is not None:
+    if topic is not None:  # query by subject
         ret = jsonify({'books': [b for b in books if b['topic'] == topic]})
         with open('./times/catalog_search_time.txt', 'a') as f:
             f.write(str(time() - catalog_start_time) + '\n')
         return ret
 
     id = request.args.get('item', type=int)
-    if id is not None:
+    if id is not None:  # query by item
         ret = jsonify({'books': [b for b in books if b['id'] == id]})
         with open('./times/catalog_lookup_time.txt', 'a') as f:
             f.write(str(time() - catalog_start_time) + '\n')
@@ -77,13 +77,13 @@ def update_books():
     catalog_start_time = time()
     id = request.args.get('item', type=int)
     cost = request.json.get('cost')
-    if cost is not None:
+    if cost is not None:  # query to update the cost of item
         for b in books:
             if b['id'] == id:
                 b['cost'] = cost
 
     delta = request.json.get('delta')
-    if delta is not None:
+    if delta is not None:  # query to update number of item
         for b in books:
             if b['id'] == id:
                 b['stock'] += delta  # Add check for zero stock
