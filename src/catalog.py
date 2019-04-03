@@ -5,15 +5,18 @@ import json
 import pandas as pd
 from flask import Flask, jsonify, request
 
+# Initializing the book names as per the assignment
 book_names = {'1': 'How to get a good grade in 677 in 20 minutes a day',
               '2': 'RPCs for Dummies',
               '3': 'Xen and the Art of Surviving Graduate School',
               '4': 'Cooking for the Impatient Graduate Student'}
 
+# Initializing the available topics
 topic_names = ['ds', 'gs']
 
 app = Flask(__name__)
 
+# # Initializing the catalogs with the necessary details
 books = [
     {
         'id': 1,
@@ -48,7 +51,7 @@ books = [
 # Initialising the persistent data
 json.dump(books, open('catalog.json', 'w'))
 
-
+# REST endpoint for query
 @app.route('/query', methods=['GET'])
 def get_books():
     books = json.load(open('catalog.json'))
@@ -67,7 +70,7 @@ def get_books():
             f.write(str(time() - catalog_start_time) + '\n')
         return ret
 
-
+# REST endpoint for update
 @app.route('/update', methods=['POST'])
 def update_books():
     books = json.load(open('catalog.json'))

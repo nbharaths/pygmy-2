@@ -1,18 +1,22 @@
 #!flask/bin/python
 from time import time
+import datetime
 import os
 
 import pandas as pd
 import requests
 from flask import Flask, request
 
+# URL of the catalog server
 CATALOG_SERVER = 'http://localhost:5000/'
 
+# Initializing the book names as per the assignment
 book_names = {'1': 'How to get a good grade in 677 in 20 minutes a day',
               '2': 'RPCs for Dummies',
               '3': 'Xen and the Art of Surviving Graduate School',
               '4': 'Cooking for the Impatient Graduate Student'}
 
+# Initializing the available topics
 topic_names = ['ds', 'gs']
 
 app = Flask(__name__)
@@ -22,7 +26,7 @@ if not os.path.isfile('order_log.txt'):
     logs = open("order_log.txt", "x")
     logs.close()
 
-
+# REST endpoint for buy
 @app.route('/buy', methods=['GET'])
 def buy_order():
     logs = open("order_log.txt", 'a')
@@ -36,13 +40,13 @@ def buy_order():
         assert b.status_code == 200
         with open('./times/order_buy_time.txt', 'a') as f:
             f.write(str(time() - order_buy_start_time) + '\n')
-        logs.write(str(time()) + ' : Bought ' + book_names[str(id)] + '\n')
+        logs.write(str(datetime.datetime.now()) + ':Bought - ' + book_names[str(id)] + '\n')
         print('Bought ' + book_names[str(id)])
         return 'Bought ' + book_names[str(id)]
     else:
         with open('./times/order_buy_time.txt', 'a') as f:
             f.write(str(time() - order_buy_start_time) + '\n')
-        logs.write(str(time()) + ' : Out of Stock ' + book_names[str(id)] + '\n')
+        logs.write(str(datetime.datetime.now()) + ':Out of Stock - ' + book_names[str(id)] + '\n')
         print('Out of Stock')
         return 'Out of Stock'
 

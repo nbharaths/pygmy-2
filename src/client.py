@@ -6,12 +6,15 @@ import pandas as pd
 import requests
 import os
 
+# Initializing the book names as per the assignment
 book_names = {'1': 'How to get a good grade in 677 in 20 minutes a day',
               '2': 'RPCs for Dummies',
               '3': 'Xen and the Art of Surviving Graduate School',
               '4': 'Cooking for the Impatient Graduate Student'}
 
+# Initializing the available actions
 actions = ['search', 'lookup', 'buy']
+# Initializing the available topics
 topics = ['ds', 'gs']
 
 # Creating the time file along with starting the server
@@ -20,7 +23,7 @@ if not os.path.isfile('./times/client_lookup_time.txt'):
     file = open("./times/client_lookup_time.txt", "x")
     file.close()
 
-
+# Pretty printing for json
 def pp_json(json_thing, sort=True, indents=4):
     if type(json_thing) is str:
         print(json.dumps(json.loads(json_thing), sort_keys=sort, indent=indents))
@@ -28,14 +31,14 @@ def pp_json(json_thing, sort=True, indents=4):
         print(json.dumps(json_thing, sort_keys=sort, indent=indents))
     return None
 
-
+# Method to update the book stock randomly
 def update_stock():
     id = random.randint(1, 4)
     b = requests.post(CATALOG_SERVER + 'update?item=' + str(id), json={'delta': 2})
     assert b.status_code == 200, 'Periodic update failed!'
     print('Periodic update successful for', book_names[str(id)])
 
-
+# Method for getting the performance stats for search, lookup and buy
 def test_response_times(num_req=10, mode='search'):
     for i in range(num_req):
         print(i)
