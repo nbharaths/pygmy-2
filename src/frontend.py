@@ -1,3 +1,5 @@
+from time import time
+
 import pandas as pd
 import requests
 from flask import Flask, request
@@ -17,8 +19,12 @@ def search():
     topic = request.args.get('topic', type=str)
     if topic is not None:
         print('Starting a search for topic', topic)
+        frontend_search_start_time = time()
         r = requests.get(CATALOG_SERVER + 'query?topic=' + topic)
+        with open('times/frontend_search_time.txt', 'a') as f:
+            f.write(str(time() - frontend_search_start_time) + '\n')
         assert r.status_code == 200, 'Search failed!'
+
         return r.text
 
 
@@ -27,7 +33,10 @@ def lookup():
     item_number = request.args.get('item', type=int)
     if item_number is not None:
         print('Starting a lookup for item', book_names[str(item_number)])
+        frontend_lookup_start_time = time()
         r = requests.get(CATALOG_SERVER + 'query?item=' + str(item_number))
+        with open('./times/frontend_lookup_time.txt', 'a') as f:
+            f.write(str(time() - frontend_lookup_start_time) + '\n')
         return r.text
 
 
@@ -36,7 +45,10 @@ def buy():
     item_number = request.args.get('item', type=int)
     if item_number is not None:
         print('Starting a buy request for item', book_names[str(item_number)])
+        frontend_buy_start_time = time()
         r = requests.get(ORDER_SERVER + 'buy?item=' + str(item_number))
+        with open('./times/frontend_buy_time.txt', 'a') as f:
+            f.write(str(time() - frontend_buy_start_time) + '\n')
         return r.text
 
 

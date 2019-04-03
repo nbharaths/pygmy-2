@@ -1,4 +1,6 @@
 #!flask/bin/python
+from time import time
+
 import pandas as pd
 from flask import Flask, jsonify, request
 
@@ -17,45 +19,53 @@ books = [
         'title': book_names['1'],
         'cost': 100,
         'topic': topic_names[0],
-        'stock': 10
+        'stock': 1500
     },
     {
         'id': 2,
         'title': book_names['2'],
         'cost': 200,
         'topic': topic_names[0],
-        'stock': 10
+        'stock': 1500
     },
     {
         'id': 3,
         'title': book_names['3'],
         'cost': 300,
         'topic': topic_names[1],
-        'stock': 10
+        'stock': 1500
     },
     {
         'id': 4,
         'title': book_names['4'],
         'cost': 400,
         'topic': topic_names[1],
-        'stock': 10
+        'stock': 1500
     }
 ]
 
 
 @app.route('/query', methods=['GET'])
 def get_books():
+    catalog_start_time = time()
     topic = request.args.get('topic', type=str)
     if topic is not None:
-        return jsonify({'books': [b for b in books if b['topic'] == topic]})
+        ret = jsonify({'books': [b for b in books if b['topic'] == topic]})
+        with open('./times/catalog_search_time.txt', 'a') as f:
+            f.write(str(time() - catalog_start_time) + '\n')
+        return ret
 
     id = request.args.get('item', type=int)
     if id is not None:
-        return jsonify({'books': [b for b in books if b['id'] == id]})
+        ret = jsonify({'books': [b for b in books if b['id'] == id]})
+        with open('./times/catalog_lookup_time.txt', 'a') as f:
+            f.write(str(time() - catalog_start_time) + '\n')
+        return ret
 
 
 @app.route('/update', methods=['POST'])
 def update_books():
+    catalog_start_time = time()
     id = request.args.get('item', type=int)
     cost = request.json.get('cost')
     if cost is not None:
@@ -68,7 +78,10 @@ def update_books():
         for b in books:
             if b['id'] == id:
                 b['stock'] += delta  # Add check for zero stock
-    return jsonify({'books': [b for b in books if b['id'] == id]})
+    ret = jsonify({'books': [b for b in books if b['id'] == id]})
+    with open('./times/catalog_buy_time.txt', 'a') as f:
+        f.write(str(time() - catalog_start_time) + '\n')
+    return ret
 
 
 if __name__ == '__main__':

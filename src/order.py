@@ -1,4 +1,6 @@
 #!flask/bin/python
+from time import time
+
 import pandas as pd
 import requests
 from flask import Flask, request
@@ -19,14 +21,19 @@ app = Flask(__name__)
 def buy_order():
     id = request.args.get('item', type=int)
     print('Querying for', book_names[str(id)])
+    order_buy_start_time = time()
     r = requests.get(CATALOG_SERVER + 'query?item=' + str(id))
     print(r.json())
     if r.json()['books'][0]['stock'] > 0:
         b = requests.post(CATALOG_SERVER + 'update?item=' + str(id), json={'delta': -1})
         assert b.status_code == 200
+        with open('./times/order_buy_time.txt', 'a') as f:
+            f.write(str(time() - order_buy_start_time) + '\n')
         print('Bought ' + book_names[str(id)])
         return 'Bought ' + book_names[str(id)]
     else:
+        with open('./times/order_buy_time.txt', 'a') as f:
+            f.write(str(time() - order_buy_start_time) + '\n')
         print('Out of Stock')
         return 'Out of Stock'
 
