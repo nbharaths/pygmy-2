@@ -4,6 +4,7 @@ from time import sleep, time
 
 import pandas as pd
 import requests
+import os
 
 book_names = {'1': 'How to get a good grade in 677 in 20 minutes a day',
               '2': 'RPCs for Dummies',
@@ -12,6 +13,12 @@ book_names = {'1': 'How to get a good grade in 677 in 20 minutes a day',
 
 actions = ['search', 'lookup', 'buy']
 topics = ['ds', 'gs']
+
+# Creating the time file along with starting the server
+if not os.path.isfile('./times/client_lookup_time.txt'):
+    os.makedirs('./times')
+    file = open("./times/client_lookup_time.txt", "x")
+    file.close()
 
 
 def pp_json(json_thing, sort=True, indents=4):

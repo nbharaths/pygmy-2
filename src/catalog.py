@@ -1,5 +1,6 @@
 #!flask/bin/python
 from time import time
+import json
 
 import pandas as pd
 from flask import Flask, jsonify, request
@@ -44,9 +45,13 @@ books = [
     }
 ]
 
+# Initialising the persistent data
+json.dump(books, open('catalog.json', 'w'))
+
 
 @app.route('/query', methods=['GET'])
 def get_books():
+    books = json.load(open('catalog.json'))
     catalog_start_time = time()
     topic = request.args.get('topic', type=str)
     if topic is not None:
@@ -65,6 +70,7 @@ def get_books():
 
 @app.route('/update', methods=['POST'])
 def update_books():
+    books = json.load(open('catalog.json'))
     catalog_start_time = time()
     id = request.args.get('item', type=int)
     cost = request.json.get('cost')
@@ -78,6 +84,7 @@ def update_books():
         for b in books:
             if b['id'] == id:
                 b['stock'] += delta  # Add check for zero stock
+    json.dump(books, open('catalog.json', 'w'))
     ret = jsonify({'books': [b for b in books if b['id'] == id]})
     with open('./times/catalog_buy_time.txt', 'a') as f:
         f.write(str(time() - catalog_start_time) + '\n')
