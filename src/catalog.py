@@ -1,6 +1,6 @@
 #!flask/bin/python
-from time import time
 import json
+from time import time
 
 import pandas as pd
 from flask import Flask, jsonify, request
@@ -86,7 +86,7 @@ def update_books():
     if delta is not None:  # query to update number of item
         for b in books:
             if b['id'] == id:
-                b['stock'] += delta  # Add check for zero stock
+                b['stock'] += delta
     json.dump(books, open('catalog.json', 'w'))
     ret = jsonify({'books': [b for b in books if b['id'] == id]})
     with open('./times/catalog_buy_time.txt', 'a') as f:
