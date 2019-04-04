@@ -31,4 +31,28 @@ time_parser.py - Script to calculate ART (Average Response Time)
 
 conftest.py - Dummy file for pytest
 
+# test File Descriptions 
+
+ E2E Tests:
+
+Setup - Start the catalog, order and frontend servers in their respective machines. Run python3 end2end.py after 
+uncommenting the relevant test. 
+Tests ensure distributedness and consistency.
+
+ Unit Tests:
+
+Framework used - pytest version 3.10.1
+
+Setup - Run pytest from the test directory. Filenames with 'test' token in the them are automatically picked up and run as unit tests.
+Tests ensure logical consistency of REST API calls
+
+# docs File Descriptions
+
+* CS677_Lab_2.pdf - Design document
+* CS677_Lab_2_Tests.pdf -  Design document showing output of tests.
+* Output file showing sample output from runs is included in the Design Document. 
+* Performance analysis is included in the Design Document.
+
+
+
 
