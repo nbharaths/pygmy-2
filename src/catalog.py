@@ -23,28 +23,28 @@ books = [
         'title': book_names['1'],
         'cost': 100,
         'topic': topic_names[0],
-        'stock': 1500
+        'stock': 5
     },
     {
         'id': 2,
         'title': book_names['2'],
         'cost': 200,
         'topic': topic_names[0],
-        'stock': 1500
+        'stock': 5
     },
     {
         'id': 3,
         'title': book_names['3'],
         'cost': 300,
         'topic': topic_names[1],
-        'stock': 1500
+        'stock': 5
     },
     {
         'id': 4,
         'title': book_names['4'],
         'cost': 400,
         'topic': topic_names[1],
-        'stock': 1500
+        'stock': 5
     }
 ]
 
