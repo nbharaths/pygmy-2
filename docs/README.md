@@ -1,8 +1,6 @@
-# 677 Lab 2
+# docs File Descriptions
 
-This directory should contain documentation for your project. You can include any files with documentation but the following files are REQUIRED:
-
-* Design doc
-* Output file showing sample output from runs
-* Performance doc showing data (bar graphs/plots, tables etc) of your measurements/experiments and simple conclusion
-* Test output showing output of tests you ran (the tests themselves should be in the test directory)
+* CS677_Lab_2.pdf - Design document
+* CS677_Lab_2_Tests.pdf -  Design document showing output of tests.
+* Output file showing sample output from runs is included in the Design Document. 
+* Performance analysis is included in the Design Document.
