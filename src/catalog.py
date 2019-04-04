@@ -51,6 +51,7 @@ books = [
 # Initialising the persistent data
 json.dump(books, open('catalog.json', 'w'))
 
+
 # REST endpoint for query
 @app.route('/query', methods=['GET'])
 def get_books():
@@ -76,6 +77,7 @@ def get_books():
     else:
         print('Invalid query')
 
+
 # REST endpoint for update
 @app.route('/update', methods=['POST'])
 def update_books():
@@ -94,8 +96,7 @@ def update_books():
         for b in books:
             if b['id'] == id:
                 b['stock'] += delta
-    else:
-        print('Invalid update')
+
     json.dump(books, open('catalog.json', 'w'))
     ret = jsonify({'books': [b for b in books if b['id'] == id]})
     print('Update successful!')
