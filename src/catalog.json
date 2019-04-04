@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "stock": 5,
+    "title": "How to get a good grade in 677 in 20 minutes a day",
+    "cost": 100,
+    "topic": "ds"
+  },
+  {
+    "id": 2,
+    "stock": 5,
+    "title": "RPCs for Dummies",
+    "cost": 200,
+    "topic": "ds"
+  },
+  {
+    "id": 3,
+    "stock": 5,
+    "title": "Xen and the Art of Surviving Graduate School",
+    "cost": 300,
+    "topic": "gs"
+  },
+  {
+    "id": 4,
+    "stock": 5,
+    "title": "Cooking for the Impatient Graduate Student",
+    "cost": 400,
+    "topic": "gs"
+  }
+]

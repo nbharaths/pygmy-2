@@ -1,14 +1,11 @@
 #!flask/bin/python
-from time import time
 import datetime
 import os
+from time import time
 
 import pandas as pd
 import requests
 from flask import Flask, request
-
-# URL of the catalog server
-CATALOG_SERVER = 'http://localhost:5000/'
 
 # Initializing the book names as per the assignment
 book_names = {'1': 'How to get a good grade in 677 in 20 minutes a day',
@@ -25,6 +22,7 @@ app = Flask(__name__)
 if not os.path.isfile('order_log.txt'):
     logs = open("order_log.txt", "x")
     logs.close()
+
 
 # REST endpoint for buy
 @app.route('/buy', methods=['GET'])

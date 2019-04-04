@@ -26,6 +26,13 @@ if not os.path.isfile('./times/client_lookup_time.txt'):
 
 # Pretty printing for json
 def pp_json(json_thing, sort=True, indents=4):
+    """
+
+    :param json_thing: JSON object to print
+    :param sort: bool to sort the output of the json
+    :param indents: int - number of spaces indentation
+    :return: None
+    """
     if type(json_thing) is str:
         print(json.dumps(json.loads(json_thing), sort_keys=sort, indent=indents))
     else:
@@ -33,16 +40,23 @@ def pp_json(json_thing, sort=True, indents=4):
     return None
 
 
-# Method to update the book stock randomly
 def update_stock():
+    """
+    Method to update the book stock periodically
+    """
     id = random.randint(1, 4)
     b = requests.post(CATALOG_SERVER + 'update?item=' + str(id), json={'delta': 2})
     assert b.status_code == 200, 'Periodic update failed!'
     print('Periodic update successful for', book_names[str(id)])
 
 
-# Method for getting the performance stats for search, lookup and buy
 def test_response_times(num_req=10, mode='search'):
+    """
+    Method for getting the performance stats for search, lookup and buy
+    :param num_req: Number of sequential request to send
+    :param mode: Method for which to end sequential requests
+    :return : None
+    """
     for i in range(num_req):
         print(i)
         if mode == 'search':

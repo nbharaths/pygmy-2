@@ -1,0 +1,68 @@
+1554277x654.5814276 : Bought RPCs for Dummies
+1554277654.738192 : Bought RPCs for Dummies
+1554277654.8631303 : Bought How to get a good grade in 677 in 20 minutes a day
+1554277654.9893482 : Bought How to get a good grade in 677 in 20 minutes a day
+1554277655.1290605 : Bought Xen and the Art of Surviving Graduate School
+1554277655.266493 : Bought RPCs for Dummies
+1554277655.3844087 : Bought Cooking for the Impatient Graduate Student
+1554277655.517052 : Bought Cooking for the Impatient Graduate Student
+1554277655.649863 : Bought RPCs for Dummies
+1554277655.7802048 : Bought RPCs for Dummies
+1554277705.1931841 : Bought How to get a good grade in 677 in 20 minutes a day
+1554277715.294323 : Bought Xen and the Art of Surviving Graduate School
+1554277725.3707094 : Bought Xen and the Art of Surviving Graduate School
+1554277745.4989753 : Bought How to get a good grade in 677 in 20 minutes a day
+1554277755.5557175 : Bought Cooking for the Impatient Graduate Student
+1554277775.6944 : Bought Xen and the Art of Surviving Graduate School
+1554277785.761513 : Bought Cooking for the Impatient Graduate Student
+1554277800.8635716 : Bought How to get a good grade in 677 in 20 minutes a day
+1554277810.9145365 : Bought RPCs for Dummies
+1554277816.0535796 : Bought How to get a good grade in 677 in 20 minutes a day
+1554277821.1027195 : Bought How to get a good grade in 677 in 20 minutes a day
+1554277826.1351087 : Bought Cooking for the Impatient Graduate Student
+1554277831.1794696 : Bought How to get a good grade in 677 in 20 minutes a day
+1554277851.3192613 : Bought Cooking for the Impatient Graduate Student
+1554277856.3477716 : Bought How to get a good grade in 677 in 20 minutes a day
+1554277861.39027 : Bought Cooking for the Impatient Graduate Student
+1554277886.5540469 : Bought RPCs for Dummies
+1554277891.6057608 : Bought Xen and the Art of Surviving Graduate School
+2019-04-03 17:59:31.152996:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 17:59:36.252677:Bought - Cooking for the Impatient Graduate Student
+2019-04-03 18:00:01.439168:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 18:00:21.616868:Bought - Cooking for the Impatient Graduate Student
+2019-04-03 18:05:17.023978:Bought - RPCs for Dummies
+2019-04-03 18:05:27.111151:Bought - RPCs for Dummies
+2019-04-03 18:05:32.179213:Bought - Cooking for the Impatient Graduate Student
+2019-04-03 18:05:42.300666:Bought - Xen and the Art of Surviving Graduate School
+2019-04-03 18:06:30.336349:Bought - RPCs for Dummies
+2019-04-03 18:06:40.458170:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 18:07:41.006862:Bought - RPCs for Dummies
+2019-04-03 18:08:16.328110:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 18:08:26.454984:Bought - RPCs for Dummies
+2019-04-03 18:08:36.518346:Bought - Cooking for the Impatient Graduate Student
+2019-04-03 18:08:51.617912:Bought - RPCs for Dummies
+2019-04-03 18:08:56.708922:Bought - Cooking for the Impatient Graduate Student
+2019-04-03 18:09:01.786661:Bought - Xen and the Art of Surviving Graduate School
+2019-04-03 18:09:06.828864:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 18:09:26.948603:Bought - Xen and the Art of Surviving Graduate School
+2019-04-03 18:09:47.153197:Bought - Cooking for the Impatient Graduate Student
+2019-04-03 18:09:57.231672:Bought - Cooking for the Impatient Graduate Student
+2019-04-03 18:10:39.124748:Bought - Cooking for the Impatient Graduate Student
+2019-04-03 18:10:44.209505:Bought - Cooking for the Impatient Graduate Student
+2019-04-03 18:11:14.432064:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 18:11:29.552756:Bought - RPCs for Dummies
+2019-04-03 18:11:34.612682:Bought - Xen and the Art of Surviving Graduate School
+2019-04-03 18:11:39.673182:Bought - RPCs for Dummies
+2019-04-03 18:12:04.872564:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 18:12:09.937194:Bought - Cooking for the Impatient Graduate Student
+2019-04-03 18:12:20.076291:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 18:12:25.228997:Bought - Xen and the Art of Surviving Graduate School
+2019-04-03 18:12:40.336382:Bought - Xen and the Art of Surviving Graduate School
+2019-04-03 18:12:50.408021:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 21:13:29.426281:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 21:13:29.504812:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 21:13:29.544383:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 21:13:29.581558:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 21:13:29.618978:Bought - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 21:13:29.649537:Out of Stock - How to get a good grade in 677 in 20 minutes a day
+2019-04-03 21:13:29.716839:Bought - How to get a good grade in 677 in 20 minutes a day
