@@ -7,4 +7,4 @@ There  is  one  config  file sv_info.csv that has server information in the comm
 
 # Program Execution
 
-Start the servers from their respective machines (as specified in sv_info.csv using python3 server_name_here.py.  Run client.py from the fourth machine to start operations
+Start the servers from their respective machines (as specified in sv_info.csv) using python3 server_name_here.py.  Run client.py from the fourth machine to start operations.
