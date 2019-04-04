@@ -1,4 +1,4 @@
 Type,IP,Port
-catalog,localhost,5000
-order,localhost,5001
-frontend,localhost,5002
+catalog,elnux1,3214
+order,elnux2,3214
+frontend,elnux3,3214
